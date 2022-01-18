@@ -2,3 +2,6 @@ spring:
     output:
         ansi:
             enabled: ALWAYS
+# spring.cloud.consul.discovery.hostname: your_host
+spring.cloud.consul.discovery.instance-id: ${spring.application.name}-${random.value}
+spring.application.name: dubbo

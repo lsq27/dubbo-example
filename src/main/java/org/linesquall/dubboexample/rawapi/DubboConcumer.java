@@ -2,6 +2,8 @@ package org.linesquall.dubboexample.rawapi;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
+import org.apache.dubbo.rpc.model.ApplicationModel;
+import org.apache.dubbo.rpc.model.ScopeModel;
 import org.linesquall.dubboexample.FirstService;
 
 public class DubboConcumer {
@@ -14,6 +16,7 @@ public class DubboConcumer {
         // 引用远程服务
         ReferenceConfig<FirstService> reference = new ReferenceConfig<>(); // 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏
         reference.setApplication(application);
+        reference.setScopeModel(ApplicationModel.defaultModel());
         reference.setInterface(FirstService.class);
         reference.setVersion("1.0.0");
         reference.setUrl("dubbo://localhost:12345");
